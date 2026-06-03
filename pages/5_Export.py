@@ -68,7 +68,7 @@ if not export_df.empty:
     st.dataframe(
         export_df[["date", "merchant", "category", "amount", "location",
                    "final_score", "risk_tier", "decision", "notes"]].head(20),
-        use_container_width=True
+        width="stretch"
     )
 else:
     st.info("No rows match the selected filters.")

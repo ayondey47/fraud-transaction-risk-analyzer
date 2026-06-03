@@ -95,12 +95,12 @@ for _, row in view.iterrows():
         )
 
         c1, c2, c3 = st.columns(3)
-        if c1.button("🚨 Escalate", key=f"esc_{txn_id}", use_container_width=True):
+        if c1.button("🚨 Escalate", key=f"esc_{txn_id}", width="stretch"):
             save_review_decision(txn_id, "escalated", notes)
             st.rerun()
-        if c2.button("✅ Mark Reviewed", key=f"rev_{txn_id}", use_container_width=True):
+        if c2.button("✅ Mark Reviewed", key=f"rev_{txn_id}", width="stretch"):
             save_review_decision(txn_id, "reviewed", notes)
             st.rerun()
-        if c3.button("⬜ Clear as Legit", key=f"clr_{txn_id}", use_container_width=True):
+        if c3.button("⬜ Clear as Legit", key=f"clr_{txn_id}", width="stretch"):
             save_review_decision(txn_id, "cleared", notes)
             st.rerun()

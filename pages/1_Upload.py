@@ -39,7 +39,7 @@ if uploaded_file is not None:
         col4.metric("Total Amount", f"${df['amount'].sum():,.2f}")
 
         st.subheader("Preview (first 10 rows)")
-        st.dataframe(df.head(10), use_container_width=True)
+        st.dataframe(df.head(10), width="stretch")
 
         st.markdown("---")
         if st.button("💾 Save & Proceed to Scoring", type="primary"):
@@ -68,4 +68,4 @@ else:
             save_transactions(df, batch_id)
             st.session_state["uploaded"] = True
         st.success(f"✅ Loaded {len(df)} sample transactions. Navigate to **2 Score**.")
-        st.dataframe(df.head(10), use_container_width=True)
+        st.dataframe(df.head(10), width="stretch")

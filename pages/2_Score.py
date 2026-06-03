@@ -75,7 +75,7 @@ if not scored_cases.empty:
             "ml_score": "ML Score",
             "final_score": "Final Score"
         }),
-        use_container_width=True
+        width="stretch"
     )
 else:
     st.info("Click **Run Fraud Detection Pipeline** to score the loaded transactions.")

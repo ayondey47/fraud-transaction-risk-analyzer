@@ -47,7 +47,7 @@ with tab1:
             text="Count"
         )
         fig.update_traces(textposition="outside")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig2 = px.histogram(
@@ -59,7 +59,7 @@ with tab1:
         fig2.add_vline(x=30, line_dash="dash", line_color="yellow", annotation_text="Medium")
         fig2.add_vline(x=60, line_dash="dash", line_color="orange", annotation_text="High")
         fig2.add_vline(x=80, line_dash="dash", line_color="red", annotation_text="Critical")
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2, width="stretch")
 
 with tab2:
     cat_stats = (
@@ -76,7 +76,7 @@ with tab2:
         text=cat_stats["count"].apply(lambda c: f"n={c}")
     )
     fig.update_traces(textposition="outside")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 with tab3:
     fig = px.scatter(
@@ -91,7 +91,7 @@ with tab3:
     fig.add_hline(y=30, line_dash="dash", line_color="yellow", opacity=0.5)
     fig.add_hline(y=60, line_dash="dash", line_color="orange", opacity=0.5)
     fig.add_hline(y=80, line_dash="dash", line_color="red", opacity=0.5)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 with tab4:
     if scored["hour"].notna().any():
@@ -108,7 +108,7 @@ with tab4:
         )
         fig.add_vrect(x0=22.5, x1=24, fillcolor="red", opacity=0.07, annotation_text="Night zone")
         fig.add_vrect(x0=0, x1=5, fillcolor="red", opacity=0.07)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         st.caption("Red shading = night window (11pm–5am), which adds +15 pts to rule score.")
     else:
@@ -134,6 +134,6 @@ with tab5:
             text=flagged_merchants["flagged_count"].apply(lambda c: f"{c} txn")
         )
         fig.update_layout(yaxis={"categoryorder": "total ascending"})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
     else:
         st.info("No Critical or High risk merchants found.")

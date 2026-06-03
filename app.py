@@ -42,7 +42,7 @@ with st.expander("📋 See sample data format"):
         {"date": "2024-01-29 23:00:00", "merchant": "Binance", "category": "Cryptocurrency",
          "amount": 3000.00, "card_last4": "1234", "location": "Online"},
     ])
-    st.dataframe(sample, use_container_width=True)
+    st.dataframe(sample, width="stretch")
 
 with st.expander("🔎 How Scoring Works"):
     st.markdown("""
