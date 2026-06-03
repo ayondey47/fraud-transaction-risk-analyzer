@@ -115,13 +115,20 @@ def build_excel(df: pd.DataFrame) -> bytes:
 
 
 st.markdown("---")
-if st.button("📥 Generate Excel Report", type="primary", disabled=export_df.empty):
-    with st.spinner("Building Excel report..."):
-        excel_bytes = build_excel(export_df)
-    st.download_button(
-        label="⬇️ Download fraud_analysis_report.xlsx",
-        data=excel_bytes,
-        file_name="fraud_analysis_report.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
-    st.success("✅ Report ready — click the button above to download.")
+if not export_df.empty:
+    if st.button("📥 Generate Excel Report", type="primary"):
+        with st.spinner("Building Excel report..."):
+            st.session_state["excel_bytes"] = build_excel(export_df)
+            st.session_state["excel_row_count"] = len(export_df)
+
+    if "excel_bytes" in st.session_state:
+        st.download_button(
+            label=f"⬇️ Download fraud_analysis_report.xlsx ({st.session_state.get('excel_row_count', 0)} rows)",
+            data=st.session_state["excel_bytes"],
+            file_name="fraud_analysis_report.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            type="primary"
+        )
+        st.success("✅ Report ready — click the download button above.")
+else:
+    st.button("📥 Generate Excel Report", type="primary", disabled=True)

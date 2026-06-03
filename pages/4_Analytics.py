@@ -24,7 +24,6 @@ if scored.empty:
 
 scored["date"] = pd.to_datetime(scored["date"], errors="coerce")
 scored["hour"] = scored["date"].dt.hour
-scored["day_of_week"] = scored["date"].dt.day_name()
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
     "📊 Risk Distribution",
