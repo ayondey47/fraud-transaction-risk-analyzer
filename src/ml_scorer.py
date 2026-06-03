@@ -43,7 +43,7 @@ def train_and_score(df: pd.DataFrame) -> pd.Series:
             return pd.Series(0.0, index=df.index)
 
         normalized = (inverted - min_s) / (max_s - min_s) * 100
-        return pd.Series(normalized.values, index=df.index).clip(0, 100)
+        return pd.Series(normalized, index=df.index).clip(0, 100)
 
     except Exception:
         return pd.Series(0.0, index=df.index)
